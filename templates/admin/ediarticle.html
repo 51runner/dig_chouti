@@ -1,0 +1,552 @@
+{% extends "admin/master.html" %}
+
+{% block main_content %}
+
+    <div class="main-content" style="">
+
+        <!-- User Info, Notifications and Menu Bar -->
+        <nav class="navbar user-info-navbar" role="navigation">
+
+            <!-- Left links for user info navbar -->
+            <ul class="user-info-menu left-links list-inline list-unstyled">
+
+                <li class="hidden-sm hidden-xs" style="min-height: 76px;">
+                    <a href="#" data-toggle="sidebar">
+                        <i class="fa-bars"></i>
+                    </a>
+                </li>
+
+                <li class="dropdown hover-line" style="min-height: 76px;">
+                    <a href="#" data-toggle="dropdown">
+                        <i class="fa-envelope-o"></i>
+                        <span class="badge badge-green">15</span>
+                    </a>
+
+                    <ul class="dropdown-menu messages">
+                        <li>
+
+                            <ul class="dropdown-menu-list list-unstyled ps-scrollbar ps-container">
+
+                                <li class="active"><!-- "active" class means message is unread -->
+                                    <a href="#">
+											<span class="line">
+												<strong>Luc Chartier</strong>
+												<span class="light small">- yesterday</span>
+											</span>
+
+                                        <span class="line desc small">
+												This ain’t our first item, it is the best of the rest.
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="active">
+                                    <a href="#">
+											<span class="line">
+												<strong>Salma Nyberg</strong>
+												<span class="light small">- 2 days ago</span>
+											</span>
+
+                                        <span class="line desc small">
+												Oh he decisively impression attachment friendship so if everything.
+											</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+											<span class="line">
+												Hayden Cartwright
+												<span class="light small">- a week ago</span>
+											</span>
+
+                                        <span class="line desc small">
+												Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+											</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+											<span class="line">
+												Sandra Eberhardt
+												<span class="light small">- 16 days ago</span>
+											</span>
+
+                                        <span class="line desc small">
+												On so attention necessary at by provision otherwise existence direction.
+											</span>
+                                    </a>
+                                </li>
+
+                                <!-- Repeated -->
+
+                                <li class="active"><!-- "active" class means message is unread -->
+                                    <a href="#">
+											<span class="line">
+												<strong>Luc Chartier</strong>
+												<span class="light small">- yesterday</span>
+											</span>
+
+                                        <span class="line desc small">
+												This ain’t our first item, it is the best of the rest.
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="active">
+                                    <a href="#">
+											<span class="line">
+												<strong>Salma Nyberg</strong>
+												<span class="light small">- 2 days ago</span>
+											</span>
+
+                                        <span class="line desc small">
+												Oh he decisively impression attachment friendship so if everything.
+											</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+											<span class="line">
+												Hayden Cartwright
+												<span class="light small">- a week ago</span>
+											</span>
+
+                                        <span class="line desc small">
+												Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+											</span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#">
+											<span class="line">
+												Sandra Eberhardt
+												<span class="light small">- 16 days ago</span>
+											</span>
+
+                                        <span class="line desc small">
+												On so attention necessary at by provision otherwise existence direction.
+											</span>
+                                    </a>
+                                </li>
+
+                                <div class="ps-scrollbar-x-rail"
+                                     style="display: block; width: 0px; left: 0px; bottom: 3px;">
+                                    <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                                </div>
+                                <div class="ps-scrollbar-y-rail"
+                                     style="display: block; top: 0px; height: 0px; right: 2px;">
+                                    <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                                </div>
+                            </ul>
+
+                        </li>
+
+                        <li class="external">
+                            <a href="blank-sidebar.html">
+                                <span>All Messages</span>
+                                <i class="fa-link-ext"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown hover-line" style="min-height: 76px;">
+                    <a href="#" data-toggle="dropdown">
+                        <i class="fa-bell-o"></i>
+                        <span class="badge badge-purple">7</span>
+                    </a>
+
+                    <ul class="dropdown-menu notifications">
+                        <li class="top">
+                            <p class="small">
+                                <a href="#" class="pull-right">Mark all Read</a>
+                                You have <strong>3</strong> new notifications.
+                            </p>
+                        </li>
+
+                        <li>
+                            <ul class="dropdown-menu-list list-unstyled ps-scrollbar ps-container">
+                                <li class="active notification-success">
+                                    <a href="#">
+                                        <i class="fa-user"></i>
+
+                                        <span class="line">
+												<strong>New user registered</strong>
+											</span>
+
+                                        <span class="line small time">
+												30 seconds ago
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="active notification-secondary">
+                                    <a href="#">
+                                        <i class="fa-lock"></i>
+
+                                        <span class="line">
+												<strong>Privacy settings have been changed</strong>
+											</span>
+
+                                        <span class="line small time">
+												3 hours ago
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="notification-primary">
+                                    <a href="#">
+                                        <i class="fa-thumbs-up"></i>
+
+                                        <span class="line">
+												<strong>Someone special liked this</strong>
+											</span>
+
+                                        <span class="line small time">
+												2 minutes ago
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="notification-danger">
+                                    <a href="#">
+                                        <i class="fa-calendar"></i>
+
+                                        <span class="line">
+												John cancelled the event
+											</span>
+
+                                        <span class="line small time">
+												9 hours ago
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="notification-info">
+                                    <a href="#">
+                                        <i class="fa-database"></i>
+
+                                        <span class="line">
+												The server is status is stable
+											</span>
+
+                                        <span class="line small time">
+												yesterday at 10:30am
+											</span>
+                                    </a>
+                                </li>
+
+                                <li class="notification-warning">
+                                    <a href="#">
+                                        <i class="fa-envelope-o"></i>
+
+                                        <span class="line">
+												New comments waiting approval
+											</span>
+
+                                        <span class="line small time">
+												last week
+											</span>
+                                    </a>
+                                </li>
+                                <div class="ps-scrollbar-x-rail"
+                                     style="display: block; width: 0px; left: 0px; bottom: 3px;">
+                                    <div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div>
+                                </div>
+                                <div class="ps-scrollbar-y-rail"
+                                     style="display: block; top: 0px; height: 0px; right: 2px;">
+                                    <div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div>
+                                </div>
+                            </ul>
+                        </li>
+
+                        <li class="external">
+                            <a href="#">
+                                <span>View all notifications</span>
+                                <i class="fa-link-ext"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+            <!-- Right links for user info navbar -->
+            <ul class="user-info-menu right-links list-inline list-unstyled">
+
+                <li class="search-form" style="min-height: 76px;">
+                    <!-- You can add "always-visible" to show make the search input visible -->
+
+                    <form method="get" action="extra-search.html">
+                        <input type="text" name="s" class="form-control search-field" placeholder="Type to search...">
+
+                        <button type="submit" class="btn btn-link">
+                            <i class="linecons-search"></i>
+                        </button>
+                    </form>
+
+                </li>
+
+                <li class="dropdown user-profile" style="min-height: 76px;">
+                    <a href="#" data-toggle="dropdown">
+                        <img src="static/admin/assets/images/user-4.png" alt="user-image"
+                             class="img-circle img-inline userpic-32"
+                             width="28">
+                        <span>
+								Arlind Nushi
+								<i class="fa-angle-down"></i>
+							</span>
+                    </a>
+
+                    <ul class="dropdown-menu user-profile-menu list-unstyled">
+                        <li>
+                            <a href="#edit-profile">
+                                <i class="fa-edit"></i>
+                                New Post
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settings">
+                                <i class="fa-wrench"></i>
+                                Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#profile">
+                                <i class="fa-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#help">
+                                <i class="fa-info"></i>
+                                Help
+                            </a>
+                        </li>
+                        <li class="last">
+                            <a href="extra-lockscreen.html">
+                                <i class="fa-lock"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li style="min-height: 76px;">
+                    <a href="#" data-toggle="chat">
+                        <i class="fa-comments-o"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+        <div class="page-title">
+
+            <div class="title-env">
+                <h1 class="title">编辑文章</h1>
+                <p class="description">Mailbox sidebar and composing new message</p>
+            </div>
+
+            <div class="breadcrumb-env">
+
+                <ol class="breadcrumb bc-1">
+                    <li>
+                        <a href="/vip.html"><i class="fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="/viphome-{{ uid }}.html">新闻列表</a>
+                    </li>
+                    <li>
+                        <a href="#">编辑新闻</a>
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </div>
+        <section class="mailbox-env">
+
+            <div class="row">
+
+                <!-- Compose Email Form -->
+                <div class="col-sm-9 mailbox-right">
+
+                    <div class="mail-compose">
+
+                        <form method="post" action="/ediviphome-{{ article.id }}-{{ uid }}.html">
+
+                            <!-- Header Title and Button Options -->
+                            <div class="mail-header">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h3>
+                                            <i class="linecons-pencil"></i>
+                                            编辑文章
+                                        </h3>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="to">标题:</label>
+                                <input type="text" class="form-control" id="to" name="title" tabindex="1"
+                                       value=" {{ article.title }}">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="subject">描述: </label>
+                                <input type="text" class="form-control" id="subject" name="description" tabindex="1"
+                                       value="{{ article.description }}">
+                            </div>
+
+
+                            <div class="compose-message-editor">
+
+                                <textarea name="content"
+                                          style="margin: 0px; width: 660px; height: 166px; border: 1px solid rgb(228, 228, 228);">
+                                    {{ article.content }}
+                                </textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-offset-9 col-sm-3">
+                                    <button type="submit"
+                                            class="btn btn-secondary btn-block btn-icon btn-icon-standalone">
+                                        <i class="fa fa-paper-plane"></i>
+                                        <span>发送</span>
+                                    </button>
+                                </div>
+
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+
+                </div>
+
+                <!-- Mailbox Sidebar -->
+                <div class="col-sm-3 mailbox-left">
+
+                    <div class="mailbox-sidebar">
+
+                        <a href="mailbox-compose.html"
+                           class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+
+                            <span>文章类型 / 栏目</span>
+                        </a>
+
+
+                        <ul class="list-unstyled mailbox-list" id="tages">
+
+                            {% for tags in tags_list %}
+
+
+                                {% if article.t_id ==  tags.id %}
+                                    <li class="active">
+                                        <a href="javascript:void(0);">
+                                            {{ tags.caption }}
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            {{ tags.caption }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+
+
+                            {% endfor %}
+
+
+                        </ul>
+
+                        <div class="vspacer"></div>
+
+                        <ul class="list-unstyled mailbox-list">
+                            <li class="list-header">Filter by tags</li>
+                            <li>
+                                <a href="#">
+                                    ThemeForest
+                                    <span class="badge badge-success badge-roundless pull-right upper">Envato</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Society
+                                    <span class="badge badge-red badge-roundless pull-right upper">Friends</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Work
+                                    <span class="badge badge-warning badge-roundless pull-right upper">Google</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- Main Footer -->
+        <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+        <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+        <!-- Or class "fixed" to  always fix the footer to the end of page -->
+        <footer class="main-footer sticky footer-type-1" style="">
+
+            <div class="footer-inner">
+
+                <!-- Add your copyright text here -->
+                <div class="footer-text">
+                    © 2014
+                    <strong>Xenon</strong>
+                    theme by <a href="http://laborator.co" target="_blank">Laborator</a>
+                </div>
+
+
+                <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+                <div class="go-up">
+
+                    <a href="#" rel="go-top">
+                        <i class="fa-angle-up"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+    </div>
+
+{% endblock %}
+
+
+{% block script %}
+<script>
+$(function () {
+    $("#tages li").click(function () {
+        $(this).addClass("active").siblings().removeClass("active")
+    })
+})
+
+</script>
+
+{% endblock %}

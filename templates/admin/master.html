@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Xenon Boostrap Admin Panel"/>
+    <meta name="author" content=""/>
+
+    <title>抽屉后台管理系统</title>
+
+    <link rel="stylesheet" href="/static/admin/assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/xenon-core.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/xenon-forms.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/xenon-components.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="/static/admin/assets/css/custom.css">
+
+    <script src="/static/admin/assets/js/jquery-1.11.1.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    {% block css %}
+    
+    {% endblock %}
+
+
+</head>
+<body class="page-body">
+
+<div class="settings-pane">
+
+    <a href="#" data-toggle="settings-pane" data-animate="true">
+        &times;
+    </a>
+
+    <div class="settings-pane-inner">
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="user-info">
+
+                    <div class="user-image">
+                        <a href="extra-profile.html">
+                            <img src="/static/admin/assets/images/user-2.png" class="img-responsive img-circle"/>
+                        </a>
+                    </div>
+
+                    <div class="user-details">
+
+                        <h3>
+                            <a href="extra-profile.html">{{ username }}</a>
+
+                            <!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
+                            <span class="user-status is-online"></span>
+                        </h3>
+
+                        <p class="user-title">Web开发人员</p>
+
+                        <div class="user-links">
+                            <a href="extra-profile.html" class="btn btn-primary">编辑个人资料</a>
+                            <a href="extra-profile.html" class="btn btn-success">升级</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-8 link-blocks-env">
+
+                <div class="links-block left-sep">
+                    <h4>
+                        <span>通知</span>
+                    </h4>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1"/>
+                            <label for="sp-chk1">消息</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2"/>
+                            <label for="sp-chk2">事件</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3"/>
+                            <label for="sp-chk3">更新</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4"/>
+                            <label for="sp-chk4">服务器正常运行时间</label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="links-block left-sep">
+                    <h4>
+                        <a href="#">
+                            <span>帮助台</span>
+                        </a>
+                    </h4>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">
+                                <i class="fa-angle-right"></i>
+                                支持中心
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-angle-right"></i>
+                                提交工单
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-angle-right"></i>
+                                协议
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-angle-right"></i>
+                                服务条款
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="page-container">
+    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+    <div class="sidebar-menu toggle-others fixed">
+
+        <div class="sidebar-menu-inner">
+
+            <header class="logo-env">
+
+                <!-- logo -->
+                <div class="logo">
+                    <a href="/vip.html" class="logo-expanded">
+                        <img src="/static/admin/assets/images/logo@2x.png" width="80" alt=""/>
+                    </a>
+
+                    <a href="dashboard-1.html" class="logo-collapsed">
+                        <img src="/static/admin/assets/images/logo-collapsed@2x.png" width="40" alt=""/>
+                    </a>
+                </div>
+
+                <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+                <div class="mobile-menu-toggle visible-xs">
+                    <a href="#" data-toggle="user-info-menu">
+                        <i class="fa-bell-o"></i>
+                        <span class="badge badge-success">7</span>
+                    </a>
+
+                    <a href="#" data-toggle="mobile-menu">
+                        <i class="fa-bars"></i>
+                    </a>
+                </div>
+
+                <!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+                <div class="settings-icon">
+                    <a href="#" data-toggle="settings-pane" data-animate="true">
+                        <i class="linecons-cog"></i>
+                    </a>
+                </div>
+
+
+            </header>
+
+
+            <ul id="main-menu" class="main-menu">
+                <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+                <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+                <li class="active opened active">
+                    <a href="/vip.html">
+                        <i class="linecons-cog"></i>
+                        <span class="title">仪表板</span>
+                    </a>
+                    <ul>
+                        <li class="active">
+                            <a href="/admin_profile.html">
+                                <span class="title">用户管理</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-2.html">
+                                <span class="title">仪表板 2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-3.html">
+                                <span class="title">仪表板 3</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="dashboard-4.html">
+                                <span class="title">仪表板 4</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="skin-generator.html">
+                                <span class="title">皮肤切换</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="layout-variants.html">
+                        <i class="linecons-desktop"></i>
+                        <span class="title">布局</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="layout-variants.html">
+                                <span class="title">变体布局 &amp; API</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-collapsed-sidebar.html">
+                                <span class="title">折叠侧边栏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-static-sidebar.html">
+                                <span class="title">静态侧边栏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-horizontal-menu.html">
+                                <span class="title">横向菜单</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-horizontal-plus-sidebar.html">
+                                <span class="title">水平放大器 & 侧边栏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-horizontal-menu-click-to-open-subs.html">
+                                <span class="title">Horizontal Open On Click</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-horizontal-menu-min.html">
+                                <span class="title">横向菜单最小</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-right-sidebar.html">
+                                <span class="title">右侧边栏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-chat-open.html">
+                                <span class="title">Chat Open</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-horizontal-sidebar-menu-collapsed-right.html">
+                                <span class="title">菜单和折叠</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-boxed.html">
+                                <span class="title">盒装布局</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="layout-boxed-horizontal-menu.html">
+                                <span class="title">Boxed &amp; Horizontal Menu</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="ui-panels.html">
+                        <i class="linecons-note"></i>
+                        <span class="title">UI 元素</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="ui-panels.html">
+                                <span class="title">面板</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-buttons.html">
+                                <span class="title">按钮</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-tabs-accordions.html">
+                                <span class="title">Tabs &amp; 手风琴</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-modals.html">
+                                <span class="title">情态动词</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-breadcrumbs.html">
+                                <span class="title">面包屑</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-blockquotes.html">
+                                <span class="title">块引用</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-progressbars.html">
+                                <span class="title">进度条</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-navbars.html">
+                                <span class="title">导航栏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-alerts.html">
+                                <span class="title">警报</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-pagination.html">
+                                <span class="title">分页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-typography.html">
+                                <span class="title">排版</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ui-other-elements.html">
+                                <span class="title">其他元素</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="ui-widgets.html">
+                        <i class="linecons-star"></i>
+                        <span class="title">窗口小部件</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailbox-main.html">
+                        <i class="linecons-mail"></i>
+                        <span class="title">邮箱</span>
+                        <span class="label label-success pull-right">5</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="mailbox-main.html">
+                                <span class="title">收件箱</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailbox-compose.html">
+                                <span class="title">撰写消息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailbox-message.html">
+                                <span class="title">查看消息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="tables-basic.html">
+                        <i class="linecons-database"></i>
+                        <span class="title">Tables</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="tables-basic.html">
+                                <span class="title">基本表格</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tables-responsive.html">
+                                <span class="title">响应 Table</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tables-datatables.html">
+                                <span class="title">数据 Tables</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="forms-native.html">
+                        <i class="linecons-params"></i>
+                        <span class="title">Forms</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="forms-native.html">
+                                <span class="title">原生元素</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-advanced.html">
+                                <span class="title">高级插件</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-wizard.html">
+                                <span class="title">表单向导</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-validation.html">
+                                <span class="title">表单验证</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-input-masks.html">
+                                <span class="title">输入掩码</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-file-upload.html">
+                                <span class="title">上传文件</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-editors.html">
+                                <span class="title">编辑</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="forms-sliders.html">
+                                <span class="title">滑块</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="extra-gallery.html">
+                        <i class="linecons-beaker"></i>
+                        <span class="title">Extra</span>
+                        <span class="label label-purple pull-right hidden-collapsed">New Items</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="extra-icons-fontawesome.html">
+                                <span class="title">图标</span>
+                                <span class="label label-warning pull-right">4</span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="extra-icons-fontawesome.html">
+                                        <span class="title">字体 Awesome</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="extra-icons-linecons.html">
+                                        <span class="title">Linecons</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="extra-icons-elusive.html">
+                                        <span class="title">Elusive</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="extra-icons-meteocons.html">
+                                        <span class="title">Meteocons</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="extra-maps-google.html">
+                                <span class="title">地图</span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="extra-maps-google.html">
+                                        <span class="title">Google 地图</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="extra-maps-advanced.html">
+                                        <span class="title">高级 Map</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="extra-maps-vector.html">
+                                        <span class="title">Vector Map</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="extra-gallery.html">
+                                <span class="title">画廊</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-calendar.html">
+                                <span class="title">日历</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-profile.html">
+                                <span class="title">简介</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-login.html">
+                                <span class="title">登陆</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-lockscreen.html">
+                                <span class="title">锁屏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-login-light.html">
+                                <span class="title">Login Light</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-timeline.html">
+                                <span class="title">时间线</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-timeline-center.html">
+                                <span class="title">时间线中心</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-notes.html">
+                                <span class="title">笔记</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-image-crop.html">
+                                <span class="title">图像裁剪</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-portlets.html">
+                                <span class="title">Portlets</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="blank-sidebar.html">
+                                <span class="title">空白页</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-search.html">
+                                <span class="title">搜索</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-invoice.html">
+                                <span class="title">发票</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-not-found.html">
+                                <span class="title">404 Page</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-tocify.html">
+                                <span class="title">Tocify</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-loader.html">
+                                <span class="title">正在加载进度</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-page-loading-ol.html">
+                                <span class="title">页面加载叠加</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-notifications.html">
+                                <span class="title">通知</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-nestable-lists.html">
+                                <span class="title">可嵌套列表</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="extra-scrollable.html">
+                                <span class="title">可滚动</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="charts-main.html">
+                        <i class="linecons-globe"></i>
+                        <span class="title">图表</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="charts-main.html">
+                                <span class="title">图表变体</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-range.html">
+                                <span class="title">范围选择器</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-sparklines.html">
+                                <span class="title">迷你图</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-map.html">
+                                <span class="title">地图</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-gauges.html">
+                                <span class="title">圆形量规</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="charts-bar-gauges.html">
+                                <span class="title">条形仪</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="linecons-cloud"></i>
+                        <span class="title">菜单级别</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="entypo-flow-line"></i>
+                                <span class="title">菜单级别 1.1</span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="entypo-flow-parallel"></i>
+                                        <span class="title">菜单级别 2.1</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="entypo-flow-parallel"></i>
+                                        <span class="title">菜单级别 2.2</span>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="entypo-flow-cascade"></i>
+                                                <span class="title">菜单级别 3.1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="entypo-flow-cascade"></i>
+                                                <span class="title">菜单级别 3.2</span>
+                                            </a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="entypo-flow-branch"></i>
+                                                        <span class="title">菜单级别 4.1</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="entypo-flow-parallel"></i>
+                                        <span class="title">菜单级别 2.3</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="entypo-flow-line"></i>
+                                <span class="title">菜单级别 1.2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="entypo-flow-line"></i>
+                                <span class="title">菜单级别 1.3</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Start extend block  -->
+
+    {% block main_content %}
+
+
+
+    {% endblock %}
+
+
+    <!-- End extend block  -->
+
+
+
+
+    <!-- start: Chat Section -->
+    <div id="chat" class="fixed">
+
+        <div class="chat-inner">
+
+
+            <h2 class="chat-header">
+                <a href="#" class="chat-close" data-toggle="chat">
+                    <i class="fa-plus-circle rotate-45deg"></i>
+                </a>
+
+                Chat
+                <span class="badge badge-success is-hidden">0</span>
+            </h2>
+
+            <script type="text/javascript">
+                // Here is just a sample how to open chat conversation box
+                jQuery(document).ready(function ($) {
+                    var $chat_conversation = $(".chat-conversation");
+
+                    $(".chat-group a").on('click', function (ev) {
+                        ev.preventDefault();
+
+                        $chat_conversation.toggleClass('is-open');
+
+                        $(".chat-conversation textarea").trigger('autosize.resize').focus();
+                    });
+
+                    $(".conversation-close").on('click', function (ev) {
+                        ev.preventDefault();
+                        $chat_conversation.removeClass('is-open');
+                    });
+                });
+            </script>
+
+
+            <div class="chat-group">
+                <strong>收藏</strong>
+
+                <a href="#"><span class="user-status is-online"></span> <em>Catherine J. Watkins</em></a>
+                <a href="#"><span class="user-status is-online"></span> <em>Nicholas R. Walker</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>Susan J. Best</em></a>
+                <a href="#"><span class="user-status is-idle"></span> <em>Fernando G. Olson</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Brandon S. Young</em></a>
+            </div>
+
+
+            <div class="chat-group">
+                <strong>工作</strong>
+
+                <a href="#"><span class="user-status is-busy"></span> <em>Rodrigo E. Lozano</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Robert J. Garcia</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Daniel A. Pena</em></a>
+            </div>
+
+
+            <div class="chat-group">
+                <strong>其他</strong>
+
+                <a href="#"><span class="user-status is-online"></span> <em>Dennis E. Johnson</em></a>
+                <a href="#"><span class="user-status is-online"></span> <em>Stuart A. Shire</em></a>
+                <a href="#"><span class="user-status is-online"></span> <em>Janet I. Matas</em></a>
+                <a href="#"><span class="user-status is-online"></span> <em>Mindy A. Smith</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>Herman S. Foltz</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>Gregory E. Robie</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>Nellie T. Foreman</em></a>
+                <a href="#"><span class="user-status is-busy"></span> <em>William R. Miller</em></a>
+                <a href="#"><span class="user-status is-idle"></span> <em>Vivian J. Hall</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Melinda A. Anderson</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Gary M. Mooneyham</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Robert C. Medina</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Dylan C. Bernal</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Marc P. Sanborn</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Kenneth M. Rochester</em></a>
+                <a href="#"><span class="user-status is-offline"></span> <em>Rachael D. Carpenter</em></a>
+            </div>
+
+        </div>
+
+        <!-- conversation template -->
+        <div class="chat-conversation">
+
+            <div class="conversation-header">
+                <a href="#" class="conversation-close">
+                    &times;
+                </a>
+
+                <span class="user-status is-online"></span>
+                <span class="display-name">Arlind Nushi</span>
+                <small>线上</small>
+            </div>
+
+            <ul class="conversation-body">
+                <li>
+                    <span class="user">Arlind Nushi</span>
+                    <span class="time">09:00</span>
+                    <p>Are you here?</p>
+                </li>
+                <li class="odd">
+                    <span class="user">Brandon S. Young</span>
+                    <span class="time">09:25</span>
+                    <p>This message is pre-queued.</p>
+                </li>
+                <li>
+                    <span class="user">Brandon S. Young</span>
+                    <span class="time">09:26</span>
+                    <p>Whohoo!</p>
+                </li>
+                <li class="odd">
+                    <span class="user">Arlind Nushi</span>
+                    <span class="time">09:27</span>
+                    <p>Do you like it?</p>
+                </li>
+            </ul>
+
+            <div class="chat-textarea">
+                <textarea class="form-control autogrow" placeholder="Type your message"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end: Chat Section -->
+
+
+</div>
+
+
+<div class="page-loading-overlay">
+    <div class="loader-2"></div>
+</div>
+
+
+<!-- Bottom Scripts -->
+<script src="/static/admin/assets/js/bootstrap.min.js"></script>
+<script src="/static/admin/assets/js/TweenMax.min.js"></script>
+<script src="/static/admin/assets/js/resizeable.js"></script>
+<script src="/static/admin/assets/js/joinable.js"></script>
+<script src="/static/admin/assets/js/xenon-api.js"></script>
+<script src="/static/admin/assets/js/xenon-toggles.js"></script>
+
+
+<!-- Imported scripts on this page -->
+<script src="/static/admin/assets/js/xenon-widgets.js"></script>
+<script src="/static/admin/assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+<script src="/static/admin/assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+<script src="/static/admin/assets/js/toastr/toastr.min.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/static/admin/assets/js/xenon-custom.js"></script>
+
+
+{% block script %}
+
+{% endblock %}
+
+</body>
+</html>

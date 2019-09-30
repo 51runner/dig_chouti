@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+{% load xx %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搞笑 段子 抽屉网</title>
+
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+</head>
+<body>
+
+
+<div class="head-box">
+    <div class="head-content">
+
+        <a href="/index.html" class="logo"></a>
+
+        <div class="action-menu">
+
+            <a href="#" class="tb active">全部</a>
+
+            {% for tag in tags %}
+                <a href="#" class="tb">{{ tag.caption }}</a>
+            {% endfor %}
+
+
+        </div>
+
+
+        <div class="key-search">
+
+            <form action="/" method="post">
+                <input type="text" class="search-txt" autocomplete="off">
+
+                <a href="#" class="i">
+                    <span class="ico"></span>
+                </a>
+            </form>
+
+        </div>
+
+        <div class="action-nav">
+
+
+            {% if userinfo.is_login %}
+                <a href="javascript:void(0);" class="userPro-Box" style="margin-left:15px; ">
+                    <img src="../static/images/images.png" alt="">
+                    <span class="u-nick" user_id="{{ user_id.id }}">{{ userinfo.username }}</span>
+                    <em></em>
+                    <ul class="child hide">
+                        <li><a href="#">我的新热榜</a></li>
+                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="#">我的钱包</a></li>
+                        <li><a href="/vip.html">个人中心</a></li>
+                        <li><a href="/loginuot.html">退出</a></li>
+                    </ul>
+                </a>
+
+            {% else %}
+                <a href="javascript:void(0);" class="register-btn">注册</a>
+                <a href="javascript:void(0);" class="login-btn">登录</a>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="main-content-box">
+
+    <div class="main-content">
+        <div class="content-L">
+
+            <div class="top-area">
+
+                <div class="child-nav">
+                    <a href="#" class="hotbtn active">最热</a>
+                    <a href="#" class="newbtn">最新</a>
+                    <a href="#" class="personbtn">人类发布</a>
+                </div>
+
+
+                <div class="sort-nav">
+                    <a href="#" class="sortbtn active">即时排序</a>
+                    <a href="#" class="newbtn">24小时</a>
+                    <a href="#" class="newbtn">3天</a>
+                </div>
+
+                <a href="javascript:void(0);" class="publish-btn">
+                    <span id="n2">发布</span>
+                </a>
+
+            </div>
+
+
+            <div class="content-list">
+
+                {% for item in articles %}
+                    <div class="item">
+
+                        <div class="news-pic">
+                                <img src="/static/imgs/{{ item.img }}" alt="{{ item.imgdescription }}">
+                        </div>
+
+                        <div class="news-content">
+                            <div class="part1">
+
+                                {% if item.web_url %}
+                                    <a href="{{ item.web_url }}" target="_blank"
+                                       class="show-content">{{ item.title }}</a>
+                                {% else %}
+                                    <a href="/getarticle-{{ item.id }}.html" class="show-content">
+                                        {{ item.title }}
+                                    </a>
+                                {% endif %}
+
+                                <!-- <span class="content-source">-ww4.sinaimg.cn</span> -->
+                                <a href="javascript:void(0);" class="n2">
+                                    <span class="content-kind"> - {{ item.t__caption }}</span>
+                                </a>
+                                <div class="summary">
+                                    {{ item.description }}
+                                </div>
+                            </div>
+
+                            <div class="part2">
+
+
+                                {% my_faover item.id user_id item.favor_count %}
+
+
+                                <a href="#" class="discuss">
+                                    <span class="hand-icon icon-discuss" rowid="{{ item.id }}"></span>
+                                    <b>5</b>
+                                </a>
+
+
+                                <a href="javascript:void(0);" class="collect" title="加入私藏">
+                                    <span class="hand-icon icon-collect"></span>
+                                    <b>私藏</b>
+                                </a>
+
+
+                                <a href="javascript:void(0);" class="user-a">
+											<span>
+												<img src="../static/images/13.png">
+											</span>
+                                    <b>{{ item.who__username }}</b>
+
+                                </a>
+
+                                <span class="left time-into">
+										<a class="time-a" href="javascript:void(0);" target="_blank">
+										    <b>{% my_simple_time current_time item.utime %} 分钟前</b>
+										</a>
+										<i>入热榜</i>
+									</span>
+
+                                <span class="share-site-to">
+                                        <i>分享到</i>
+                                        <span class="share-icon">
+                                            <a class="icon-sina" title="分享到新浪微博" href="#"></a>
+                                            <a class="icon-douban" title="分享到豆瓣" href="#"></a>
+                                            <a class="icon-qqzone" title="分享到QQ空间" href="#"></a>
+                                            <a class="icon-tenxun" title="分享到腾讯微博" href="#"></a>
+                                            <a class="icon-renren" title="分享到人人网" href="#"></a>
+
+                                        </span>
+                                    </span>
+
+                            </div>
+
+                            <div class="part3 hide" rowid="{{ item.id }}">
+                                <div class="hearcontent">
+                                    <span>最新评论(5)</span>
+                                    <span class="contentbule">去评论页面</span>
+                                    <span class="content-r">X</span>
+                                </div>
+                                <div class="contentbody">
+                                    <ul class="pl">
+                                        <li>
+                                            <img src="../static/images/xiaoicon.jpg" alt="">
+                                            <span class="contentusername"><a href="#">终极者</a> 起了他生病的时候波波维奇接受他儿子拜访对着镜头说:孩子，你表现的很好，但我还是希望在这拜访的是你父亲，赛格你回来吧，我再也不逗你了。泪目！
+                                        <a href="#"
+                                           style="float: right; color: #ADADAD !important;">9分钟前发布 来自Android</a>
+                                        </span>
+                                        </li>
+                                        <li>
+                                            <img src="../static/images/xiaoicon.jpg" alt="">
+                                            <span class="contentusername"><a href="#">飞来终极者</a> 这货和马刺关系不错，老头子，邓肯和这位抗癌斗士关系不错！
+                                        <a href="#" style="float: right; color: #ADADAD !important; line-height: 30px">9分钟前发布 来自Android</a>
+                                        </span>
+                                        </li>
+                                        <li>
+                                            <img src="../static/images/xiaoicon.jpg" alt="">
+                                            <span class="contentusername"><a href="#">飞来终极者</a> 这货和马刺关系不错，老头子，邓肯和这位抗癌斗士关系不错！
+                                        <a href="#" style="float: right; color: #ADADAD !important; line-height: 30px">9分钟前发布 来自Android</a>
+                                        </span>
+
+                                            <div class="nextlevel">
+                                                <ul>
+                                                    <li>
+                                                        <img src="../static/images/xiaoicon.jpg" alt="">
+                                                        <span><a href="#">忍者</a> 这货和马刺关系不错，老头子~~ <a href="#"
+                                                                                                    style="float: right; color: #ADADAD !important; line-height: 30px">9分钟前发布 来自Android</a></span>
+                                                    </li>
+                                                    <div class="nextlevel2">
+                                                        <ul>
+                                                            <li>
+                                                                <img src="../static/images/xiaoicon.jpg" alt="">
+                                                                <span><a href="#">忍者</a> 这货和马刺关系不错，老头子~~ <a href="#"
+                                                                                                            style="float: right; color: #ADADAD !important; line-height: 30px">9分钟前发布 来自Android</a></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <img src="../static/images/xiaoicon.jpg" alt="">
+                                            <span class="contentusername"><a href="#">终极者</a> 起了他生病的时候波波维奇接受他儿子拜访对着镜头说:孩子，你表现的很好，但我还是希望在这拜访的是你父亲，赛格你回来吧，我再也不逗你了。泪目！
+                                        <a href="#"
+                                           style="float: right; color: #ADADAD !important;">9分钟前发布 来自Android</a>
+                                        </span>
+                                        </li>
+                                        <li>
+                                            <img src="../static/images/xiaoicon.jpg" alt="">
+                                            <span class="contentusername"><a href="#">飞来终极者</a> 这货和马刺关系不错，老头子，邓肯和这位抗癌斗士关系不错！
+                                        <a href="#" style="float: right; color: #ADADAD !important; line-height: 30px">9分钟前发布 来自Android</a>
+                                        </span>
+                                        </li>
+
+                                    </ul>
+                                    <div class="plk">
+                                        <input type="text">
+                                        <butoon>评论</butoon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
+            <div class="page-area">
+                <ul>
+                    {{ str_pager|safe }}
+
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-R"></div>
+
+        <div class="footer-box">
+            <div class="foot-nav">
+                <a href="#" target="_blank">关于我们</a>
+                <span>|</span>
+                <a href="#" target="_blank">联系我们</a>
+                <span>|</span>
+                <a href="#" target="_blank">服务条款</a>
+                <span>|</span>
+                <a href="#" target="_blank">隐私政策</a>
+                <span>|</span>
+                <a href="#" target="_blank">抽屉新热榜工具</a>
+                <span>|</span>
+                <a href="#" target="_blank">下载客户端</a>
+                <span>|</span>
+                <a href="#" target="_blank">意见与反馈</a>
+                <span>|</span>
+                <a href="#" target="_blank">友情链接</a>
+                <span>|</span>
+                <a href="#" target="_blank">公告</a>
+                <a href="#" style="margin-left:0;vertical-align:-2px;">
+                    <img src="../static/images/ct_rss.gif" width="36" height="14">
+                </a>
+            </div>
+
+            <div class="foot-nav2">
+                <a target="_blank" href="#">
+                    <img class="foot_e" src="../static/images/footer1.gif" width="36" height="14">
+                </a>
+                <span class="foot_d">旗下站点</span>
+                <span class="foot_a">©2016chouti.com</span>
+                <a target="_blank" href="#" class="foot_b">京ICP备09053974号-3 京公网安备 110102004562</a>
+                <div style="margin-top:6px;">版权所有：北京格致璞科技有限公司</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal hide">
+        <div class="header">
+            <p>登陆</p>
+            <p>注册</p>
+            <span style="position:absolute;right:8px;top:12px;width:15px;height:15px;">
+                <div class="btn-close icons
+        dialog-btn-close" id="closeX">X</div>
+            </span>
+        </div>
+        <div class="left-frame">
+            <div class="body">
+
+                <span class="userlogi">用户名登陆</span>
+                <span class="auth_message"></span>
+                <p>
+                    <input type="text" name="username" placeholder="用户名">
+                </p>
+                <p>
+                    <input type="password" name="password" placeholder="密码">
+                </p>
+
+                <p class="authcode">
+                    <input id="iauth_code" type="text" style="width: 160px !important;" name="authcode"
+                           placeholder="验证码~~">
+                    <button id="get_authcode">
+                        获取验证码
+                    </button>
+                    <span id="auth_code"></span>
+                </p>
+
+                <div class="savepassword">
+                    <span>
+                     <input type="checkbox" value="1" checked>
+                        两个星期内自动登陆
+                    </span>
+                    <span>
+                        <a href="javascript:void(0);">忘记密码?</a>
+                    </span>
+                </div>
+                <div class="btnlogi">
+                    <input type="button" id="ajax_auth_login" class="hide_operation" value="登陆">
+                </div>
+
+            </div>
+        </div>
+        <div class="right-frame">
+            <div class="body">
+                <span class="emailauth">1 填写邮箱 > 2 填写基本资料</span>
+                <span class="auth_code_error"></span>
+
+                <p>
+                    <input type="text" name="newusername" placeholder="用户名">
+                </p>
+                <p>
+                    <input type="password" name="newpassword" placeholder="密码">
+                </p>
+                <p>
+                    <input type="email" name="newemail" placeholder="邮箱@~~">
+                    <button id="click_oncode">获取验证码</button>
+                </p>
+                <p>
+                    <input type="text" name="emailcode" placeholder="验证码">
+                    <button id="waiting_code" style="background-color: #53d192 !important;">等待验证码</button>
+                </p>
+
+                <div class="nextstep">
+                    <input type="button" id="next" value="下一步">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="release hide">
+
+
+        <form action="/vip.html"></form>
+
+        <div class="header">
+            <span class="findnew">分析新发现</span>
+            <span class="closefindnew">X</span>
+        </div>
+        <div class="bodycontent">
+            <div class="tab_outer">
+                <ul class="menu">
+                    <li xxx="c1" class="current" onclick="tab(this);">链接</li>
+                    <li xxx="c2" onclick="tab(this);">文字</li>
+                    <li xxx="c3" onclick="tab(this);">图片</li>
+                </ul>
+                <div class="content">
+                    <div id="c1">
+                        <p>
+                            {#                            <span class="error_message hide"></span>#}
+                            <span class="at_link">文章链接</span>
+                        <div class="urls">
+                            <input type="text" placeholder="http:// ">
+                            <button id="get_link">获取链接</button>
+                        </div>
+                        </p>
+
+                        <p>
+                            <span>标题</span>
+                        <div class="title">
+                            <input type="text" name="title">
+                        </div>
+
+                        </p>
+                        <p>
+                            <span>添加摘要（选填）</span>
+                        <div class="ct">
+                            <textarea name="description" id="" cols="81" rows="6"></textarea>
+                        </div>
+                        <div class="tags">
+                            <ul>
+                                <span>发布到:</span>
+                                <li tages="1" class="activetion">42区</li>
+                                <li tages="2">段子</li>
+                                <li tages="3">图片</li>
+                                <li tages="4">挨踢1024</li>
+                                <li tages="5">我问你答</li>
+                            </ul>
+                        </div>
+                        <div class="spider_getweb"><input type="submit" class="no_shou" disabled="disabled" value="提交">
+                        </div>
+                        </p>
+                    </div>
+                    <div id="c2" class="hide">
+                        <div class="cont2">
+                            <input type="text" name="title2" placeholder="发布标题....">
+
+                        </div>
+                        <div class="cont">
+                            <textarea name="content" id="" cols="81" rows="6" placeholder="发布段子...."></textarea>
+                            <span>还可以输入<i>150</i>字</span>
+                        </div>
+
+                        <div class="c2tags">
+                            <ul>
+                                <span>发布到:</span>
+                                <li tages="2">段子</li>
+                                <li tages="5">我问你答</li>
+                            </ul>
+                        </div>
+                        <div class="c2btn">
+                            <input style="cursor: no-drop" type="reset" value="重置">
+                            <input style="cursor: no-drop" type="submit" value="发布">
+                        </div>
+                    </div>
+                    <div id="c3" class="hide">
+                        <div class="uploadimg">
+                            添加图片
+                        </div>
+                        <div class="c3img">
+                            <p id="p_img">
+                                <a href="javacsript:void(0);">
+                                    图片上传
+                                    <input type="file" name="img" id="img" size="1" hidefocus="true">
+
+                                </a>
+                            </p>
+                            <p style="float: right; margin: 0 10px">
+                                <button id="canlen_img" class="hide">取消</button>
+                                <input type="submit" id="inp" value="预览图片">
+                            </p>
+                        </div>
+                        <div class="cont">
+                            <textarea name="imgdescription" id="" cols="81" rows="6"
+                                      placeholder="请输入图片描述...."></textarea>
+                            <span>还可以输入<i>150</i>字</span>
+                        </div>
+                        <div class="c2tags">
+                            <ul>
+                                <span>发布到:</span>
+                                <li>图片</li>
+                                <li>我问你答</li>
+                            </ul>
+                        </div>
+                        <div class="c2btn">
+                            <input type="reset" value="重置">
+                            <input id="submit_caryicle" type="submit" value="发布">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="shade hide">
+
+    </div>
+
+
+</div>
+
+<script src="../static/js/jquery-3.1.1.min.js"></script>
+
+
+<script>
+    // 在未登录之前清除所有的点赞效果
+    $(document).ready(function () {
+        if($("a").hasClass("login-btn")){
+            $(".icon-recommend").removeClass("dianzan");
+            $(".icon-recommend").attr("disabled","false").css("cursor","no-drop");
+
+        }else {
+            $(".icon-recommend").remove("disabled","false").removeClass("cursor");
+        }
+
+
+        $(".userPro-Box").click(function () {
+            $(".child").slideToggle(200);
+        });
+        $(".register-btn,.login-btn").click(function () {
+            $('.modal,.shade').removeClass('hide');
+        });
+        $("#closeX").click(function () {
+            $(".modal,.shade").addClass('hide');
+        });
+
+        $(".closefindnew").click(function () {
+            $(".release ,.shade").addClass('hide');
+        });
+
+        // 评论隐藏以显示
+
+        $(".icon-discuss").click(function () {
+            var row_id = $(this).attr("rowid");
+            $(".part3[rowid='" + row_id + "']").slideToggle(1000);
+        });
+
+
+        $(".content-r").click(function () {
+            $(".part3").slideUp(1000);
+        });
+
+
+        $("input[name='username']").click(function () {
+            $(".valid").remove();
+        });
+
+        // 发送ajax获取验证码返回
+        $("#get_authcode").click(function () {
+            $.ajax({
+                url: '/index.html',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    "username": $("input[name='username']").val(),
+                    "password": $("input[name='password']").val(),
+                    "authcode": $("input[name='authcode']").val()
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data.status) {
+                        $("#get_authcode").text(data.authocede);
+                        $(".hide_operation").removeClass('hide_operation');
+                    } else {
+
+                        $(".error-mag").remove();
+
+                        $(".auth_message").text(data.messagess);
+                        var error_obj = JSON.parse(data.error);
+                        $.each(error_obj, function (k, v) {
+                            //k:username or password
+                            //v:[{}{}{},]
+                            var tag = document.createElement('span');
+                            tag.className = 'error-mag';
+                            tag.innerHTML = v[0].message;
+                            $('input[name="' + k + '"]').after(tag);
+                        })
+                    }
+
+                }
+
+            });
+
+            //  去除错误提示
+            $("input[name='username']").click(function () {
+                $(".error-mag").remove();
+                $(".auth_message").remove();
+            })
+
+
+            //  去除错误提示
+            $("input[name='newusername']").click(function () {
+                $(".auth_code_error").remove();
+
+            })
+
+
+        });
+
+        // 用户框鼠标离开立即验证 用户名是否存在
+        $("input[name='username']").blur(function () {
+            $.ajax({
+                url: '/authuser.html',
+                type: "POST",
+                dataType: "JSON",
+                data: {'username': $("input[name='username']").val(),},
+                success: function (arg) {
+                    $(".valid").remove();
+                    if (arg.status) {
+                        var imgs = document.createElement('img');
+                        imgs.className = "valid";
+                        imgs.src = '/static/images/valid.png';
+                        $("input[name='username']").after(imgs);
+                    } else {
+                        var imgs = document.createElement('img');
+                        imgs.className = "valid";
+                        imgs.src = '/static/images/invalid.png';
+                        $("input[name='username']").after(imgs);
+                    }
+                }
+
+            })
+        });
+
+        // 登陆验证
+        $("#ajax_auth_login").click(function () {
+            $.ajax({
+                url: '/authlogin.html',
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    'username': $("input[name='username']").val(),
+                    'password': $("input[name='password']").val(),
+                    'authcode': $("#iauth_code").val(),
+                },
+                success: function (arg) {
+                    if (!arg.status) {
+                        $(".auth_message").text(arg.messages);
+                    }
+                    else {
+                        location.href = "/index.html"
+                    }
+                }
+            })
+        });
+
+
+        // 注册用户框鼠标离开立即验证 用户名是否存在
+        $("input[name='newusername']").blur(function () {
+            $.ajax({
+                url: '/authuser.html',
+                type: "POST",
+                dataType: "JSON",
+                data: {'username': $("input[name='newusername']").val()},
+                success: function (arg) {
+                    $(".valid").remove();
+                    if (arg.status) {
+                        var imgs = document.createElement('img');
+                        imgs.className = "valid";
+                        imgs.src = '/static/images/invalid.png';
+                        $("input[name='newusername']").after(imgs);
+                    } else {
+                        var imgs = document.createElement('img');
+                        imgs.className = "valid";
+                        imgs.src = '/static/images/valid.png';
+                        $("input[name='newusername']").after(imgs);
+                    }
+                }
+
+            })
+        });
+
+
+        //注册验证
+        $("#click_oncode").click(function () {
+
+            $.ajax({
+                url: "/register.html",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    'newusername': $("input[name='newusername']").val(),
+                    'newpassword': $("input[name='newpassword']").val(),
+                    'newemail': $("input[name='newemail']").val(),
+                },
+                success: function (arg) {
+                    if (arg.status) {
+                        console.log(arg);
+
+                        var time_hide = 60;
+                        var interval = setInterval(function () {
+                            $("#click_oncode").text(" " + time_hide + "秒后失效");
+                            $("#click_oncode").attr('disabled', 'false');
+
+                            time_hide -= 1;
+                            $("#waiting_code").text(arg.authocede).css("font-weight", "bold");
+                            if (time_hide <= 0) {
+                                clearInterval(interval);
+                                $("#click_oncode").text("获取验证码").css("background-color", "#6AA1EA");
+                                $("#waiting_code").text("等待验证码");
+                                $("#click_oncode").removeAttr('disabled');
+
+                            }
+                        }, 1000);
+
+                    } else {
+                        console.log(arg);
+                        $(".errors-mag").remove();
+                        var error_obj = JSON.parse(arg.error_message);
+                        console.log(error_obj);
+
+                        $.each(error_obj, function (k, v) {
+                            var tag = document.createElement('p');
+                            tag.className = 'errors-mag';
+                            tag.innerHTML = v[0].message;
+                            $('input[name="' + k + '"]').before(tag);
+                        })
+
+
+                    }
+                }
+
+            })
+        });
+
+
+        // 光标激活去除提示 注册
+        $("input[name='newusername'],input[name='newpassword'],input[name='newemail']").focus(function () {
+            $(".errors-mag").remove();
+        });
+
+
+        // 验证码有效期 注册
+        $("#next").click(function () {
+            $.ajax({
+                url: "/timeauth.html",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    "username": $("input[name='newusername']").val(),
+                    "password": $("input[name='newpassword']").val(),
+                    "email": $("input[name='newemail']").val(),
+                    "authcode": $("input[name='emailcode']").val()
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data.status) {
+                        location.href = '/index.html'
+
+                    } else {
+                        $(".auth_code_error").text(data.message);
+                    }
+                }
+            })
+        });
+
+
+        // 发布区验证
+        $("#n2").click(function () {
+            $.ajax({
+                url: "/loginuot.html",
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.status) {
+                        $(".release, .shade").removeClass('hide');
+                    } else {
+                        $(".register-btn").click()
+                    }
+                }
+
+            })
+        });
+
+
+        // 激活选中的tags
+
+        $(".tags li").click(function () {
+            $(this).addClass("activetion").siblings().removeClass("activetion");
+            var s = $(this).attr("tages");
+            console.log(s);
+        });
+
+
+        // 激活选中的tags2
+
+        $(".c2tags li").click(function () {
+            $(this).addClass("activetion").siblings().removeClass("activetion");
+            var s = $(this).attr("tages");
+            console.log(s);
+        });
+
+
+        // 获取文章链接
+        $("#get_link").click(function () {
+
+            $.ajax({
+                url: "/get_link.html",
+                type: "GET",
+                dataType: "JSON",
+                data: {"web_url": $(".urls input[type='text']").val()},
+                success: function (data) {
+                    if (data.status) {
+                        $(".title input[name='title']").val(data.title);
+                        $(".ct textarea[name='description']").val(data.description);
+                        $(".at_link").text("蜘蛛抓取成功～~").css("color", "#6AA1EA").css("font-size", "14px");
+                        $(".spider_getweb input").removeAttr("disabled");
+                        $(".spider_getweb input").removeClass("no_shou");
+                    } else {
+
+                        $(".at_link").text("你请求的资源蜘蛛无法处理~").css("color", "red").css("font-size", "14px");
+                        $(".title input[name='title']").val(" ");
+                        $(".ct textarea[name='description']").val(" ");
+                        $(".spider_getweb input").attr("disabled", "false");
+
+                        {#                        var obj = setInterval(function () {#}
+                        {#                            $(".urls input[type='text']").val(" ");#}
+                        {#                        }, 300)#}
+                    }
+
+                }
+            })
+        });
+
+        // 蜘蛛抓取过来的连接发送到后台
+        $(".spider_getweb input[type='submit']").click(function () {
+            console.log("dsdsdsdsdsdsd");
+            $.ajax({
+
+                url: "/senddata.html",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    "web_url": $(".urls input[type='text']").val(),
+                    "title": $(".title input[name='title']").val(),
+                    "description": $(".ct textarea[name='description']").val(),
+                    "t_id": $(".tags li").attr("tages"),
+                    "who_id": $(".u-nick").attr("user_id")
+
+                },
+                success: function (data) {
+                    if (data.status) {
+                        location.href = '/index.html'
+                    } else {
+                        // 此处为失败 操 不写了 睡觉~
+                    }
+                }
+
+
+            });
+
+
+        });
+
+        //ajax发布文章
+        $("#submit_caryicle").click(function () {
+
+            $.ajax({
+                url: '/get_link.html',
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    "title": $("input[name='title2']").val(),
+                    "description": $("textarea[name='content']").val(),
+                    "t_id": $(".tags li").attr("tages"),
+                    "content": $("textarea[name='content']").val(),
+                    "imgdesciption": $("textarea[name='imgdescription']").val(),
+                    "who_id": $(".u-nick").attr("user_id")
+                },
+                success: function (data) {
+                    if (data.status) {
+                        location.href = '/index.html'
+                    } else {
+
+                    }
+                }
+
+            })
+        });
+
+
+        // 上传图片
+        $("#inp").click(function () {
+
+            var dict = new FormData();
+            dict.append("file_img", document.getElementById("img").files[0]);
+
+            $.ajax({
+                url: "/upload_img.html",
+                type: "POST",
+                data: dict,
+                processData: false,
+                contentType: false,
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.status) {
+                        $("#p_img img").remove();
+                        var tags = document.createElement("img");
+
+                        tags.src = "/static/imgs/" + data.imgname;
+                        tags.width = '60';
+                        tags.height = "60";
+                        tags.id = "show_id_img";
+                        tags.alt = data.imgname;
+                        $("#p_img").after(tags);
+                        $("#inp").attr("disabled", "false");
+                        $("#canlen_img").removeClass("hide");
+
+                    } else {
+                        var show_span = document.createElement("span");
+                        show_span.textContent = data.error_message;
+                        show_span.color = "red";
+                        $("#p_img").append(show_span);
+                    }
+                }
+            })
+        });
+
+
+        //取消上传的图片
+        $("#canlen_img").click(function () {
+            var img_name = $("#show_id_img").attr("alt");
+            $.ajax({
+                url: "/upload_img.html",
+                type: "GET",
+                dataType: "JSON",
+                data: {"imgname": img_name},
+                success: function (data) {
+                    if (data.status) {
+                        $("#show_id_img").remove();
+                        $("#canlen_img").addClass("hide");
+                    } else {
+
+                    }
+                }
+            })
+
+
+        });
+
+        // 在未登录之前去除所有的点赞效果
+
+
+        //点赞效果
+        $(".icon-recommend").click(function () {
+            var fz = 12;
+            var tp = 5;
+            var lf = 5;
+            var op = 1;
+            var count = 0;
+            var tag = document.createElement('span');
+
+
+
+            if ($(this).hasClass("dianzan")) {
+                $(this).removeClass("dianzan");
+                tag.innerHTML = "-1";
+                var news_id = $(this).attr("news_id");
+                $.ajax({
+                    url: "/favor.html",
+                    type: "post",
+                    dataType: "json",
+                    data: {"news_id": news_id},
+                    success: function (data) {
+                        if (data.status) {
+                            var counto = parseInt($("a[n_id='" + news_id + "'] b").text());
+                            counto -= 1;
+                            $("a[n_id='" + news_id + "'] b").text(counto);
+
+                        } else {
+
+                        }
+                    }
+                })
+
+
+            } else {
+                $(this).addClass("dianzan");
+                tag.innerHTML = "+1";
+                var news_id = $(this).attr("news_id");
+                $.ajax({
+                    url: "/favor.html",
+                    type: "get",
+                    dataType: "json",
+                    data: {"news_id": news_id},
+                    success: function (data) {
+                        if (data.status) {
+                            var counto = parseInt($("a[n_id='" + news_id + "'] b").text());
+                            counto += 1;
+                            $("a[n_id='" + news_id + "'] b").text(counto);
+
+                        } else {
+
+                        }
+                    }
+                })
+
+            }
+
+
+
+
+            tag.style.color = "green";
+            tag.style.fontSize = fz + "px";
+            tag.style.top = tp + "px";
+            tag.style.left = lf + "px";
+            tag.style.opacity = op;
+            $(this).append(tag);
+
+            var obj = setInterval(function () {
+                fz += 5;
+                tp -= 15;
+                lf += 5;
+                op -= 0.1;
+
+                tag.style.color = "green";
+                tag.style.fontSize = fz + "px";
+                tag.style.top = tp + "px";
+                tag.style.left = lf + "px";
+                tag.style.opacity = op;
+                if (op < 0) {
+                    clearInterval(obj);
+                    $(tag).remove();
+                }
+            }, 100)
+        })
+
+
+    });
+    function tab(self) {
+        $(self).addClass('current');
+        $(self).siblings().removeClass('current');
+
+        var s = $(self).attr("xxx");
+        $("#" + s).removeClass('hide').siblings().addClass("hide");
+    }
+
+</script>
+
+
+</body>
+</html>
